@@ -1,0 +1,89 @@
+@import "config";
+@import "utils";
+
+$settings-width: 180px;
+$settings-height-mid: 800px;
+
+$header-height: 50px;
+
+header {
+    background: $color1;
+    height: $header-height;
+    color: #fff;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        padding: 0 2rem;
+
+        #options {
+            height: 100%;
+            width: 350px;
+            display: flex;
+            justify-content: end;
+
+            li {
+                padding: 0 .3rem;
+                padding-top: .9rem;
+                font-size: 1.2rem;
+
+                &:hover {
+                    background: $color3;
+                    cursor: pointer;
+                    color: #fff;
+                }
+            }
+        }
+
+        #symbol {
+            &-logo {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                background: url("../img/logo.jpg") no-repeat center center/cover;
+            }
+
+            &:hover {
+                cursor: default;
+            }
+        }
+    }
+
+    #settings-menu {
+        position: absolute;
+        top: $header-height;
+        right: 0;
+        background: $color3;
+        width: $settings-width;
+        height: $settings-height-mid;
+        z-index: 100;
+        border-left: solid $color5 10px;
+        font-size: 1.2rem;
+
+        transition-property: all;
+        transition-duration: .5s;
+        transition-timing-function: ease-in-out;
+
+        transform: translateX(calc($settings-width + 10px));
+        visibility: hidden;
+        opacity: 0;
+
+        &.show {
+            transform: translateX(0);
+            visibility: visible;
+            opacity: 1;
+        }
+
+        li {
+            text-align: center;
+            padding: .2rem 0;
+            margin-top: .2rem;
+
+            &:hover {
+                cursor: default;
+                background: $color5;
+            }
+        }
+    }
+}

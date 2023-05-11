@@ -1,0 +1,12 @@
+@import "config";
+@import "utils";
+
+footer {
+    height: 60px;
+    background: $color1;
+    color: #fff;
+    text-align: center;
+    padding-top: 2.5rem;
+    font-size: 1.3rem;
+    z-index: 1;
+}
