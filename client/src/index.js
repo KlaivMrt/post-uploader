@@ -6,6 +6,5 @@ import Footer from "./components/Footer";
 
 const signin = new Signin();
 const signup = new Signup();
-const nav = new Navbar()
 const home = new Home();
 Footer.render();

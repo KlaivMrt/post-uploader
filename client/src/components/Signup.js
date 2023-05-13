@@ -1,4 +1,7 @@
 import "../scss/signup.scss";
+import userApi from "../services/userApi";
+import ErrorMessanger from "./ErrorMessaging";
+
 class Signup {
     constructor() {
         this.#render();
@@ -20,22 +23,22 @@ class Signup {
             <div id="signup-box">
                 <form>
                     <div class="group">
-                        <label>Username</label>
+                        <label id='n-label'>Username</label>
                         <input type="text">
                     </div>
 
                     <div class="group">
-                        <label>Email</label>
+                        <label id='e-label'>Email</label>
                         <input type="email">
                     </div>
 
                     <div class="group">
-                        <label>Password</label>
+                        <label id='p1-label'>Password</label>
                         <input id="pass1" type="password">
                     </div>
 
                     <div class="group">
-                        <label>Confirm Password</label>
+                        <label id='p1-labe2'>Confirm Password</label>
                         <input id="pass2" type="password">
                     </div>
 
