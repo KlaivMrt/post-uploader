@@ -1,0 +1,23 @@
+@import "config";
+@import "utils";
+
+$height: 50px;
+$width-mid: 500px;
+
+#error-messanger {
+    position: absolute;
+    z-index: 10;
+    height: $height;
+    width: $width-mid;
+    top: $height;
+    left: calc(50% - calc($width-mid * .5));
+    border: 2px solid $dark-red;
+    background: $light-red;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    text-align: center;
+    color: $dark-red;
+}
