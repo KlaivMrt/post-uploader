@@ -54,10 +54,15 @@ exports.getUser = async (req, res, next) => {
         {expiresIn: "1h"}
         );
 
+        const userResponse = {
+            _id: user._id,
+            username: user.username
+        };
+
         res.status(200).json({
             success: true,
             token,
-            data: user
+            data: userResponse
         }); 
         
     } catch (error) {
