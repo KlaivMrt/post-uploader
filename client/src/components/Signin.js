@@ -8,24 +8,14 @@ class Signin {
         this.#loadEventListeners();
     }
 
-    #alertEmail() {
-        document.querySelector("#signin-box .group label[for='email']").classList.add("alert");
-        document.querySelector("#signin-box .group input[type='email']").classList.add("alert");
+    #alertElement(element) {
+        document.querySelector(`#signin-box .group #${element}-label`).classList.add("alert");
+        document.querySelector(`#signin-box .group #${element}-input`).classList.add("alert");
     }
 
-    #alertPass() {
-        document.querySelector("#signin-box .group label[for='password']").classList.add("alert");
-        document.querySelector("#signin-box .group input[type='password']").classList.add("alert");
-    }
-
-    #removeAlertE() {
-        document.querySelector("#signin-box .group label[for='email']").classList.remove("alert");
-        document.querySelector("#signin-box .group input[type='email']").classList.remove("alert");
-    }
-
-    #removeAlertP() {
-        document.querySelector("#signin-box .group label[for='password']").classList.remove("alert");
-        document.querySelector("#signin-box .group input[type='password']").classList.remove("alert");
+    #removeAlert(element) {
+        document.querySelector(`#signin-box .group #${element}-label`).classList.remove("alert");
+        document.querySelector(`#signin-box .group #${element}-input`).classList.remove("alert");
     }
     
     #signin = async (event) => {
@@ -38,14 +28,18 @@ class Signin {
             if(!email || !password) {
 
                 if(!email) {
-                    this.#alertEmail();
-                    setTimeout(this.#removeAlertE, 3000);
+                    this.#alertElement("e");
+                    setTimeout(() => {
+                        this.#removeAlert("e");
+                    }, 3000);
     
                 }
 
                 if(!password) {
-                    this.#alertPass();
-                    setTimeout(this.#removeAlertP, 3000);
+                    this.#alertElement("p");
+                    setTimeout(() => {
+                        this.#removeAlert("p");
+                    }, 3000);
                 }
 
                 return;
@@ -76,13 +70,13 @@ class Signin {
             <div id="signin-box">
                 <form>
                     <div class="group">
-                        <label for="email">Email</label>
-                        <input type="email">
+                        <label id='e-label' for="email">Email</label>
+                        <input id='e-input' type="email">
                     </div>
 
                     <div class="group">
-                        <label for="password">Password</label>
-                        <input type="password">
+                        <label id='p-label' for="password">Password</label>
+                        <input id='p-input' type="password">
                     </div>
 
                     <button id='signin-btn' class="btn-dark">Submit</button>

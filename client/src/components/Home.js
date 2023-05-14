@@ -17,8 +17,8 @@ class Home {
     }
 
     #resetSignin() {
-        document.querySelector("#signin-box form input[type='email']").value = "";
-        document.querySelector("#signin-box form input[type='password']").value = "";
+        document.querySelector("#signin-box form #e-input").value = "";
+        document.querySelector("#signin-box form #p-input").value = "";
     }
 
     #showSignin = (event) => {
@@ -37,10 +37,10 @@ class Home {
     }
 
     #resetSignup() {
-        document.querySelector("#signup-box form input[type='email']").value = "";
-        document.querySelector("#signup-box form input[type='text']").value = "";
-        document.querySelector("#signup-box form #pass1").value = "";
-        document.querySelector("#signup-box form #pass2").value = "";
+        document.querySelector("#signup-box form #e-input").value = "";
+        document.querySelector("#signup-box form #u-input").value = "";
+        document.querySelector("#signup-box form #p1-input").value = "";
+        document.querySelector("#signup-box form #p2-input").value = "";
     }
 
     #showSignup = (event) => {
