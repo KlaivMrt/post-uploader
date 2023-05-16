@@ -9,7 +9,7 @@ exports.getUser = async (req, res, next) => {
         const password = req.body.password;
         
         if(!email || !password) {
-            res.status(400).jsons({
+            res.status(400).json({
                 success: false,
                 error: "Entry/ies missing"
             });
@@ -17,7 +17,7 @@ exports.getUser = async (req, res, next) => {
         }
 
         if(!/^\w+([\.-]?\w+)*@((gmail)|(hotmail)|(outlook)).([a-z]{2,3})$/.test(email)) {
-            res.status(400).jsons({
+            res.status(400).json({
                 success: false,
                 error: "Invalid email"
             });
@@ -82,7 +82,7 @@ exports.createUser = async (req, res, next) => {
         const password2 = req.body.password2;
         
         if(!email || !username || !password || !password2) {
-            res.status(400).jsons({
+            res.status(400).json({
                 success: false,
                 error: "Entry/ies missing"
             });
@@ -90,7 +90,7 @@ exports.createUser = async (req, res, next) => {
         }
 
         if(!/^\w+([\.-]?\w+)*@((gmail)|(hotmail)|(outlook)).([a-z]{2,3})$/.test(email)) {
-            res.status(400).jsons({
+            res.status(400).json({
                 success: false,
                 error: "Invalid email"
             });
@@ -98,7 +98,7 @@ exports.createUser = async (req, res, next) => {
         }
 
         if(!/^\w+([\.-]?\w+)$/.test(username) || username.length > 15 || username.length < 2) {
-            res.status(400).jsons({
+            res.status(400).json({
                 success: false,
                 error: "Invalid username"
             });
@@ -134,8 +134,8 @@ exports.createUser = async (req, res, next) => {
         await newUser.save();
 
         const token = jwt.sign({
-            userId: mewUser._id,
-            userName: mewUser.username
+            userId: newUser._id,
+            userName: newUser.username
         },
         process.env.SECRET,
         {expiresIn: "1h"}
