@@ -1,9 +1,10 @@
+import ErrorMessanger from "../components/ErrorMessaging";
 
 class UserApi {
     #url;
 
     constructor() {
-        this.#url = "http://localhost:5000/api/user";
+        this.#url = "/api/user";
     }
     
     signin = async (body) => {
@@ -21,11 +22,13 @@ class UserApi {
 
             window.sessionStorage.setItem("token", data.token);
             window.sessionStorage.setItem("user", data.data.username);
+            window.sessionStorage.setItem("_id", data.data._id);
             
             return data;
         } catch (error) {
             console.error(error);
             //TODO: render an error element/page
+            // ErrorMessanger.serverError();
         }
     }
 
@@ -43,9 +46,6 @@ class UserApi {
 
             const data = await response.json();
 
-            console.log("data");
-            console.log(data);
-
             window.sessionStorage.setItem("token", data.token);
             window.sessionStorage.setItem("user", data.data.username);
             
@@ -53,6 +53,7 @@ class UserApi {
         } catch (error) {
             console.error(error);
             //TODO: render an error element/page
+            // ErrorMessanger.serverError();
         }
     }
 }

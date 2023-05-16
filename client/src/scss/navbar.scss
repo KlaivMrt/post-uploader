@@ -34,14 +34,28 @@ header {
                     color: #fff;
                 }
             }
+
+            #toggler {
+                background: url("../img/toggler.jpg") no-repeat center center/cover #fff;
+                width: 36px;
+                height: 36px;
+            }
         }
 
         #symbol {
+            display: flex;
+            
             &-logo {
                 display: inline-block;
                 width: 50px;
                 height: 50px;
                 background: url("../img/logo.jpg") no-repeat center center/cover;
+            }
+
+            &-name {
+                display: inline-block;
+                // height: 50px;
+                padding-top: 1.1rem;
             }
 
             &:hover {

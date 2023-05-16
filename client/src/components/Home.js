@@ -17,7 +17,7 @@ class Home {
     }
 
     #resetSignin() {
-        document.querySelector("#signin-box form #e-input").value = "";
+        document.querySelector("#signin-box form #ei-input").value = "";
         document.querySelector("#signin-box form #p-input").value = "";
     }
 
@@ -37,7 +37,7 @@ class Home {
     }
 
     #resetSignup() {
-        document.querySelector("#signup-box form #e-input").value = "";
+        document.querySelector("#signup-box form #eu-input").value = "";
         document.querySelector("#signup-box form #u-input").value = "";
         document.querySelector("#signup-box form #p1-input").value = "";
         document.querySelector("#signup-box form #p2-input").value = "";

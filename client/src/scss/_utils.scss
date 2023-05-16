@@ -38,3 +38,15 @@ $width-mid: 950px;
         }
     }
 }
+
+#overlay {
+    position: absolute;
+    height: 125%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: $color1;
+    opacity: .8;
+    z-index: 10;
+    visibility: hidden;
+}

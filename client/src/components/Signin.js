@@ -28,9 +28,9 @@ class Signin {
             if(!email || !password) {
 
                 if(!email) {
-                    this.#alertElement("e");
+                    this.#alertElement("ei");
                     setTimeout(() => {
-                        this.#removeAlert("e");
+                        this.#removeAlert("ei");
                     }, 3000);
     
                 }
@@ -57,7 +57,7 @@ class Signin {
 
             const response = await UserApi.signin({email, password});
 
-            // window.location.href = "./feed.html";
+            window.location.href = "./feed.html";
         }
     }
 
@@ -70,8 +70,8 @@ class Signin {
             <div id="signin-box">
                 <form>
                     <div class="group">
-                        <label id='e-label' for="email">Email</label>
-                        <input id='e-input' type="email">
+                        <label id='ei-label' for="email">Email</label>
+                        <input id='ei-input' type="email">
                     </div>
 
                     <div class="group">
