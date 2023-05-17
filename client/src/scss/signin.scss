@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "config";
 @import "utils";
 
@@ -54,3 +55,72 @@ $width: 450px;
         }
     }
 }
+=======
+@import "config";
+@import "utils";
+
+$height-mid: 215px;
+$width: 450px;
+
+#signin-box {
+    position: absolute;
+    width: $width;
+    height: $height-mid;
+    background: $color4;
+    top: calc(50% - calc($height-mid * .5));
+    left: calc(50% - calc($width * .5));
+    z-index: 20;
+    border-radius: 5px;
+    color: #fff;
+
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+
+    &.show {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;    
+    }
+
+    form {
+        margin: 1.5rem;
+
+        .group {
+            margin-bottom: 1.5rem;
+            
+            label {
+                display: block;
+
+                &.alert {
+                    &:after {
+                        content: "*";
+                        color: red;
+                    }
+                }
+            }
+
+            input {
+                width: 99%;
+                padding: .3rem .2rem;
+                margin-top: .3rem;
+                border-radius: 5px;
+                border: none;
+
+                font-weight: bold;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &.alert {
+                    outline: 3px solid red;
+                }
+            }
+        }
+    }
+}
+>>>>>>> refs/remotes/origin/master

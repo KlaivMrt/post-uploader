@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import "config";
 @import "utils";
 
@@ -89,3 +90,85 @@ $home-height-mid: 800px;
     z-index: 10;
     visibility: hidden;
 }
+=======
+@import "config";
+@import "utils";
+
+$logo-width-mid: 450px;
+$logo-height-mid: 450px;
+
+$home-height-mid: 800px;
+
+#home {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: $home-height-mid;
+    background: url(../img/home.jpg) no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+
+    &>* {
+        z-index: 5;
+        font-weight: bold;
+    }
+
+    &:before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background: $color2;
+        opacity: .8;
+        z-index: 3;
+    }
+
+    span {
+        color: $color5;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    p {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1.1rem;
+    }
+
+    #user-credentials {
+        button {
+            margin: 0 3rem;
+        }
+    }
+    
+    // #background {
+    //     position: absolute;
+    //     top: calc(50% - calc($matrix-height * .5));
+    //     left: calc(50% - calc($matrix-width * .5));
+    //     height: $matrix-height;
+    //     width: $matrix-width;
+        
+    //     #matrix{
+    //         width: 100%;
+    //         height: 100%;
+    //         background: $color1;
+    //     }
+    // }
+}
+
+#home-logo {
+    height: $logo-height-mid;
+    width: $logo-width-mid;
+    background: url("../img/logo.jpg") no-repeat center center/cover;
+    position: absolute;
+    top: calc(calc($home-height-mid * .5) - calc($logo-height-mid * .5));
+    left: calc(50% - calc($logo-width-mid * .5));
+}
+>>>>>>> refs/remotes/origin/master
