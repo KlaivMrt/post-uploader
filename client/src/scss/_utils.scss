@@ -1,45 +1,3 @@
-<<<<<<< HEAD
-// $width-wide: ;
-$width-mid: 950px;
-// $width-mobile: ;
-// $width-land: ;
-
-.container {
-    // max-width: $width-mid;
-    margin: auto;
-    overflow: hidden;
-}
-
-.standart-btn {
-    width: 150px;
-    height: 30px;
-    border: none;
-    border-radius: 5px
-}
-
-.btn {
-    &-dark {
-        @extend .standart-btn;
-        background: $color1;
-        color: #fff;
-
-        &:hover {
-            background: $color2;
-        }
-    }
-
-    &-light {
-        @extend .standart-btn;
-        background: #fff;
-        color: $color1;
-
-        &:hover {
-            background: $color4;
-            color: #fff;
-        }
-    }
-}
-=======
 // $width-wide: ;
 $width-mid: 950px;
 // $width-mobile: ;
@@ -83,7 +41,7 @@ $width-mid: 950px;
 
 #overlay {
     position: absolute;
-    height: 125%;
+    height: 100%;
     width: 100%;
     top: 0;
     left: 0;
@@ -92,4 +50,3 @@ $width-mid: 950px;
     z-index: 10;
     visibility: hidden;
 }
->>>>>>> refs/remotes/origin/master
