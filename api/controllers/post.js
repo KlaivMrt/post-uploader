@@ -4,10 +4,11 @@ exports.createPost = async (req, res, next) => {
     try {
 
         console.log(req.body);
+        console.log(req.file);
         
-        const creator = req.body.creator;
-        const caption = req.body.caption;
-        const imageUrl = req.body.imageUrl;
+        // const creator = req.body.creator;
+        // const caption = req.body.caption;
+        // const image = req.body.image;
         
         // if(!imageUrl) {
         //     res.status(400).json({
@@ -25,10 +26,12 @@ exports.createPost = async (req, res, next) => {
         //     return;
         // }
 
-        console.log(creator);
-        console.log(caption);
-        console.log(imageUrl);
-
+        // console.log(creator);
+        // console.log(caption);
+        // console.log(image);
+        // console.log(req.file);
+        // console.log("ok");
+        
         // const newPost = new Post({
         //     creator,
         //     imageUrl,

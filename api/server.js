@@ -21,7 +21,7 @@ const app = express();
 
 const filestorage = multer.diskStorage({
     destination: (req, file, cb) =>{
-        cb(null, "/img");
+        cb(null, "./img");
     },
     filename: (req, file, cb) => {
         cb(null, new Date().toISOString() + "-" + file.originalname);
@@ -36,14 +36,14 @@ const fileFilter = (rew, file, cb) => {
     }
 }
 
-app.use(express.static(path.resolve(__dirname, "../public")));
+app.use(express.static(path.resolve(__dirname, "/public")));
 app.use(express.json());
-app.use(multer({storage: filestorage, fileFilter: fileFilter}).single("imageUrl"));
-app.use("/img", express.static(path.resolve(__dirname, "../img")));
+app.use(multer({storage: filestorage, limits: {fileSize:1000000}, fileFilter: fileFilter}).single("image"));
+app.use("/img", express.static(path.resolve(__dirname, "img")));
 app.use(express.urlencoded({extended: false}));
 
 app.use(cors({
-    origin: ["http://localhost:3000", "http://localhost:5000", "*"],
+    origin: ["http://172.17.0.3:3000", "http://172.17.0.3:5000"],
     credentials: true
 }));
 

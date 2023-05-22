@@ -1,3 +1,4 @@
+// import { Query } from "mongoose";
 import "../scss/uploader.scss";
 import PostApi from "../services/postApi";
 
@@ -10,20 +11,20 @@ class Uploader {
     #uploadPost = async (event) => {
         if(event.target.id === "upload-btn") {
             event.preventDefault();
+            const form = document.querySelector("#uploader-box form");
             const creator = window.sessionStorage.getItem("_id");
             const caption = document.getElementById("ca-input").value;
-            const imageUrl = document.getElementById("im-input").value;
+            const image = document.getElementById("im-input").files;
 
-            const formData = new FormData();
+            const formData = new FormData(form);
+
             formData.append("creator", creator);
             formData.append("caption", caption);
-            formData.append("imageUrl", imageUrl);
+            // formData.append("image", image);
 
-            console.log(creator);
-            console.log(caption);
-            console.log(imageUrl);
+            // console.log(formData);
 
-            // await PostApi.createPost(formData);
+            await PostApi.createPost(formData);
         }
     }
 
@@ -39,7 +40,7 @@ class Uploader {
                     <hr>
                     
                     <div class="group">
-                        <input id="im-input" type="file">
+                        <input id="im-input" name='image' type="file">
                     </div>
         
                     <div class="group">
