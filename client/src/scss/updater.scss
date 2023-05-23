@@ -1,0 +1,67 @@
+@import "config";
+@import "utils";
+
+$height: 450px;
+$width-mid: 400px;
+
+#updater-box {
+    position: absolute;
+    z-index: 20;
+    height: $height;
+    width: $width-mid;
+    top: calc(50% - calc($height * .5));
+    left: calc(50% - calc($width-mid * .5));
+
+    background-color: #333;
+    padding: 1rem;
+    border-radius: 5px;
+    visibility: hidden;
+
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+    transform: scale(0);
+    opacity: 0;
+
+    &.show{
+        opacity: 1;
+        transform: scale(1);
+        visibility: visible;
+    }
+
+    form {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        gap: .7rem;
+
+        img {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: auto;
+        }
+
+        textarea {
+            resize: none;
+            width: 97%;
+            border-radius: 5px;
+            padding: .5rem .2rem;
+            border: 2.5px solid $color5;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .group {
+            // display: grid;
+            // grid-template-columns: repeat(2, 1fr);
+            // align-items: center;
+
+            button {
+                margin-left: 2rem;
+            }
+        }
+    }
+
+}
