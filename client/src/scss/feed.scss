@@ -1,68 +1,23 @@
 @import "config";
 @import "utils";
 
-$height: 400px;
-$width-mid: 400px;
+$img-width: 200px;
+$img-height: 200px;
 
 #feed {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, calc($img-width + 10px));
     gap: .3rem;
-}
 
-#uploader-box {
-    position: absolute;
-    z-index: 20;
-    height: $height;
-    width: $width-mid;
-    top: calc(50% - calc($height * .5));
-    left: calc(50% - calc($width-mid * .5));
-
-    background-color: #333;
     padding: 1rem;
-    border-radius: 5px;
-    visibility: hidden;
 
-    transition-property: all;
-    transition-duration: .5s;
-    transition-timing-function: ease-in-out;
-    transform: scale(0);
-    opacity: 0;
+    .post {
 
-    &.show{
-        opacity: 1;
-        transform: scale(1);
-        visibility: visible;
-    }
-
-    form {
-        h2 {
-            text-align: center;
-            color: $color5;
-        }
-        
-        .group {
-            margin: 3rem 0;
-
-            #ca-input {
-                resize: none;
-                width: 97%;
-                border-radius: 5px;
-                padding: .5rem .2rem;
-                border: 2.5px solid $color5;
-
-                &:focus {
-                    outline: none;
-                }
-            }
-
-            #im-input {
-                background-color: #fff;
-                padding: .2rem;
-                width: 97%;
-                border-radius: 5px;
-                border: 2.5px solid $color5;
-            }
+        &-img {
+            width: $img-width;
+            height: $img-height;
         }
     }
 }
+
+

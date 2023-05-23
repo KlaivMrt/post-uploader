@@ -19,7 +19,7 @@ class Signup {
     }
 
     
-    #signup = (event) => {
+    #signup = async (event) => {
         if(event.target.id === "signup-btn") {
             event.preventDefault();
             
@@ -86,7 +86,7 @@ class Signup {
                 return;
             }
     
-            UserApi.signup({
+            await UserApi.signup({
                 username,
                 email,
                 password: pass1,

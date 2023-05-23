@@ -48,6 +48,7 @@ class UserApi {
 
             window.sessionStorage.setItem("token", data.token);
             window.sessionStorage.setItem("user", data.data.username);
+            window.sessionStorage.setItem("_id", data.data._id);
             
             return data;
         } catch (error) {

@@ -55,7 +55,7 @@ class Signin {
                 return;
             }
 
-            const response = await UserApi.signin({email, password});
+            await UserApi.signin({email, password});
 
             window.location.href = "./feed.html";
         }

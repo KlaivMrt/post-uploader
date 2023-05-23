@@ -14,17 +14,16 @@ class Uploader {
             const form = document.querySelector("#uploader-box form");
             const creator = window.sessionStorage.getItem("_id");
             const caption = document.getElementById("ca-input").value;
-            const image = document.getElementById("im-input").files;
 
             const formData = new FormData(form);
 
             formData.append("creator", creator);
             formData.append("caption", caption);
-            // formData.append("image", image);
-
-            // console.log(formData);
 
             await PostApi.createPost(formData);
+
+            document.dispatchEvent(new Event("displayPosts"));
+            document.dispatchEvent(new Event("hideUploader"));
         }
     }
 

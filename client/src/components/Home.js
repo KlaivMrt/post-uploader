@@ -51,7 +51,7 @@ class Home {
     }
 
     #hideSignup = (event) => {
-        if(event.target.id === "overlay" || event.type === "hideSignup") {
+        if(event.target.id === "overlay") {
             this.#hideOverlay();
             document.getElementById("signup-box").classList.remove("show");
             this.#resetSignup();
@@ -63,9 +63,6 @@ class Home {
         window.addEventListener("click", this.#hideSignin);
         window.addEventListener("click", this.#showSignup);
         window.addEventListener("click", this.#hideSignup);
-
-        // document.addEventListener("hideSignin", this.#hideSignin);
-        // document.addEventListener("hideSignup", this.#hideSignup);
     }
 
     #render() {
