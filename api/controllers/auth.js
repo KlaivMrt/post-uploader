@@ -34,7 +34,7 @@ exports.getUser = async (req, res, next) => {
             return;
         }
 
-        console.log(user);
+        console.log(`${user.username} connected at ${new Date().toISOString()}`);
 
         const check = await bcrypt.compare(password, user.password);
 

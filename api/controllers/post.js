@@ -5,7 +5,7 @@ require("dotenv").config();
 exports.createPost = async (req, res, next) => {
     try {
         const image = req.file;
-        const creator = req.body.creator;
+        const creator = req.userId;
         const caption = req.body.caption;
         const imageUrl = req.file.path;
         
@@ -48,7 +48,7 @@ exports.createPost = async (req, res, next) => {
 
 exports.getPosts = async (req, res, next) => {
     try {
-        const id = req.params["id"];
+        const id = req.userId;
 
         if(!id) {
             res.status(404).json({
@@ -88,7 +88,7 @@ exports.getPosts = async (req, res, next) => {
 
 exports.getPost = async (req, res, next) => {
     try {
-        const id = req.params.id;
+        const id = req.params["id"];
 
         if(!id) {
             res.status(400).json({
@@ -152,6 +152,29 @@ exports.deletePost = async (req, res, next) => {
         });
         
         console.log(response);
+
+        res.status(200).json({
+            success: true
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            error: "Something went wrong"
+        });
+    }
+}
+
+exports.updatePost = async (req, res, next) => {
+    try {
+        const id = req.body._id;
+        const post = req.body;
+
+        await Post.updateOne({_id: id}, {
+            $set: {
+                caption: post.caption
+            }
+        });
 
         res.status(200).json({
             success: true
