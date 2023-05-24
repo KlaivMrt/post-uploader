@@ -1,4 +1,3 @@
-// import { Query } from "mongoose";
 import "../scss/uploader.scss";
 import PostApi from "../services/postApi";
 
@@ -8,13 +7,28 @@ class Uploader {
         this.#loadEventListener();
     }
 
+    #removeAlert() {
+        document.getElementById("im-input").classList.remove("alert");
+    }
+
+    #alert() {
+        document.getElementById("im-input").classList.add("alert");
+    }
+
     #uploadPost = async (event) => {
         if(event.target.id === "upload-btn") {
             event.preventDefault();
             const form = document.querySelector("#uploader-box form");
             const creator = window.sessionStorage.getItem("_id");
             const caption = document.getElementById("ca-input").value;
+            const imagePath = document.getElementById("im-input");
 
+            if(!imagePath.value) {
+                this.#alert();
+                setTimeout(this.#removeAlert, 3000);
+                return;
+            }
+            
             const formData = new FormData(form);
 
             formData.append("creator", creator);
@@ -22,8 +36,8 @@ class Uploader {
 
             await PostApi.createPost(formData);
 
-            document.dispatchEvent(new Event("displayPosts"));
-            document.dispatchEvent(new Event("hideUploader"));
+            window.dispatchEvent(new Event("displayPosts"));
+            window.dispatchEvent(new Event("hideUploader"));
         }
     }
 

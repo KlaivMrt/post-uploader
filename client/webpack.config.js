@@ -6,7 +6,6 @@ module.exports = {
     entry: {
         index: path.resolve(__dirname, "src/index.js"),
         feed: path.resolve(__dirname, "src/feed.js"),
-        profile: path.resolve(__dirname, "src/profile.js")
     },
     output: {
         path: path.resolve(__dirname, "../public"),
@@ -49,7 +48,7 @@ module.exports = {
         ]
     },
     plugins: [].concat(
-        ["index", "feed", "profile"].map((file) => 
+        ["index", "feed"].map((file) => 
             new htmlWebpacPlugin({
                 inject: true,
                 filename: `${file}.html`,

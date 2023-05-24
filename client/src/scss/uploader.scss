@@ -57,6 +57,10 @@ $width-mid: 400px;
                 width: 97%;
                 border-radius: 5px;
                 border: 2.5px solid $color5;
+
+                &.alert {
+                    outline: 3px solid red;
+                }
             }
         }
     }

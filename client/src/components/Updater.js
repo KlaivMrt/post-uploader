@@ -20,33 +20,55 @@ class Updater {
         if(event.target.id === "overlay" || event.type === "hideUpdater") {
             document.getElementById("updater-box").classList.remove("show");
             document.getElementById("overlay").style.visibility = "hidden";
+
         }
     }
     
-    displayPost = (post) => {
-        this.#post = post;
+    #getPost = async (event) => {
+        if(event.target.className === "post-img") {
 
-        document.getElementById("up-img").style.content = `url("${post.imageUrl}")`;
-        document.getElementById("up-caption").value = post.caption;
-        
-        this.#show();
+            const response = await PostApi.getPost(event.target.parentElement.id);
+
+            this.#post = response.data;
+
+            document.getElementById("up-img").style.content = `url("${this.#post.imageUrl}")`;
+            document.getElementById("up-caption").value = this.#post.caption;
+            
+            this.#show();
+        }
     }
 
-    #deletePost = (event) => {
+    #deletePost = async (event) => {
         if(event.target.id === "delete-btn") {
             event.preventDefault();
-            PostApi.deletePost(this.#post._id);
+            await PostApi.deletePost(this.#post._id);
 
-            document.dispatchEvent(new Event("displayPosts"));
-            document.dispatchEvent(new Event("hideUpdater"));
+            window.dispatchEvent(new Event("displayPosts"));
+            window.dispatchEvent(new Event("hideUpdater"));
+        }
+    }
+
+    #updatePost = async (event) => {
+        if(event.target.id === "update-btn") {
+            event.preventDefault();
+            const caption = document.getElementById("up-caption").value;
+
+            this.#post.caption = caption;
+
+            await PostApi.updatePost(this.#post);
+
+            window.dispatchEvent(new Event("displayPosts"));
+            window.dispatchEvent(new Event("hideUpdater"));
         }
     }
     
     #loadEventListeners = () => {
         window.addEventListener("click", this.#hide);
         window.addEventListener("click", this.#deletePost);
+        window.addEventListener("click", this.#updatePost);
+        window.addEventListener("click", this.#getPost);
 
-        document.addEventListener("hideUpdater", this.#hide);
+        window.addEventListener("hideUpdater", this.#hide);
     }
 
     #render() {

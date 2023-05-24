@@ -2,7 +2,7 @@
 @import "utils";
 
 $settings-width: 180px;
-$settings-height-mid: 800px;
+$settings-height-mid: 200px;
 
 $header-height: 50px;
 
@@ -73,6 +73,8 @@ header {
         height: $settings-height-mid;
         z-index: 100;
         border-left: solid $color5 10px;
+        border-bottom: solid $color5 10px;
+        border-bottom-left-radius: 5px;
         font-size: 1.2rem;
 
         transition-property: all;

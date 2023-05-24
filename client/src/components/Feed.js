@@ -1,34 +1,21 @@
 import "../scss/feed.scss";
 import PostApi from "../services/postApi";
-import Updater from "./Updater";
 
 class Feed {
     #posts;
-    #updater;
     
     constructor() {
-        this.#updater = new Updater();
-
         this.#render();
         this.#loadEventListeners();
         
         this.#posts = [];
-        this.#getPosts();
+        window.dispatchEvent(new Event("displayPosts"));
     }
 
-    #getPost = async (event) => {
-        if(event.target.className === "post-img") {
+    #getPosts = async () => {
+        const token = window.sessionStorage.getItem("token");
 
-            const response = await PostApi.getPost(event.target.parentElement.id);
-
-            this.#updater.displayPost(response.data);
-        }
-    }
-
-    #getPosts = async() => {
-        const id = window.sessionStorage.getItem("_id");
-
-        const response = await PostApi.getPosts(id);
+        const response = await PostApi.getPosts();
 
         this.#posts = response.data;
         const feed = document.getElementById("feed");
@@ -67,10 +54,9 @@ class Feed {
     #loadEventListeners = () => {
         window.addEventListener("click", this.#showUploader);
         window.addEventListener("click", this.#hideUploader);
-        window.addEventListener("click", this.#getPost);
 
-        document.addEventListener("hideUploader", this.#hideUploader);
-        document.addEventListener("displayPosts", this.#getPosts);
+        window.addEventListener("hideUploader", this.#hideUploader);
+        window.addEventListener("displayPosts", this.#getPosts);
     }
 
     #render() {
